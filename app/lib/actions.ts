@@ -1,3 +1,4 @@
+"use server"
 import { skip } from "node:test";
 import prisma from "@/app/db/index";
 import { BlogData } from "@/app/lib/validations";

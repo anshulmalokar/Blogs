@@ -60,10 +60,17 @@ export const authOptions = {
     ],
     secret: process.env.JWT_SECRET || "secret",
     callbacks: {
-        // TODO: can u fix the type here? Using any is bad
+        async jwt({token, user}:any) {
+            if (user?.id) {
+                token.sub = user.id
+            }
+            return token
+         },
         async session({ token, session }: any) {
-             session.user.id = token.sub;
-             return session;
+            if(session?.user){
+                session.id = token.sub;
+            }
+            return session;
         }
     }
   }

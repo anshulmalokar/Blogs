@@ -11,6 +11,6 @@ export type LoginData = z.infer<typeof loginValidationSchema>
 export type BlogData = {
    title: string,
    content: string,
-   published: boolean,
+   published?: boolean,
    authodId: string
 }
